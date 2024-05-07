@@ -13,13 +13,24 @@ class SortedList {
 
 
   get(pos) {
-    if (pos > this.length) throw new Error("OutOfBounds");
+    if (pos > this.length || pos < 0) throw new Error("OutOfBounds");
     else {
-      return this.items.getIndex(pos)
+      // directly return the item of a given position (no need for getting index as index is alreay the position passed to the fnction )
+      return this.items[pos]
     }
   }
 
-  max() { }
+  max() {
+    if (this.length == 0) throw new Error("EmptySortedList");
+    else {
+      const sorted = this.items.sort((a, b) => a - b);
+      return sorted[sorted.length - 1]
+        ;
+
+
+    }
+  }
+
 
   min() { }
 
