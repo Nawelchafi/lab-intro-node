@@ -5,6 +5,7 @@ class SortedList {
   }
 
   add(item) {
+    // i removed the if condition as we do  this.items.push(item) we are already putting one element only 
     this.items.push(item);
     this.length++;
 
@@ -15,11 +16,11 @@ class SortedList {
   get(pos) {
     if (pos > this.length || pos < 0) throw new Error("OutOfBounds");
     else {
-      // directly return the item of a given position (no need for getting index as index is alreay the position passed to the fnction )
+      //  (ps : no need for getting index as index is alreay the position passed to the fnction )
       return this.items[pos]
     }
   }
-
+  // mde use of the sorted array way to get the last element (that is the biggest)
   max() {
     if (this.length == 0) throw new Error("EmptySortedList");
     else {
