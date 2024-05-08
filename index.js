@@ -5,7 +5,6 @@ class SortedList {
   }
 
   add(item) {
-    // i removed the if condition as we do  this.items.push(item) we are already putting one element only
     this.items.push(item);
     this.length++;
 
@@ -14,19 +13,16 @@ class SortedList {
 
   get(pos) {
     this.checkForErrors(pos);
-    //  (ps : no need for getting index as index is alreay the position passed to the fnction )
     return this.items[pos];
   }
-  // mde use of the sorted array way to get the last element (that is the biggest)
   max() {
     this.checkForErrors();
-    //const sorted = this.items.sort((a, b) => a - b);
     return this.get(this.length - 1);
   }
 
   min() {
     this.checkForErrors();
-    return this.get(0); // minimum value is always the first element
+    return this.get(0);
   }
 
   sum() {
