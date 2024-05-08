@@ -13,23 +13,19 @@ class SortedList {
   }
 
   get(pos) {
-    if (pos > this.length || pos < 0) throw new Error("OutOfBounds");
-    else {
-      //  (ps : no need for getting index as index is alreay the position passed to the fnction )
-      return this.items[pos];
-    }
+    this.checkForErrors(pos);
+    //  (ps : no need for getting index as index is alreay the position passed to the fnction )
+    return this.items[pos];
   }
   // mde use of the sorted array way to get the last element (that is the biggest)
   max() {
-    if (this.length == 0) throw new Error("EmptySortedList");
-    else {
-      //const sorted = this.items.sort((a, b) => a - b);
-      return this.items[this.length - 1];
-    }
+    this.checkForErrors();
+    //const sorted = this.items.sort((a, b) => a - b);
+    return this.get(this.length - 1);
   }
 
   min() {
-    if (this.length == 0) throw new Error("EmptySortedList");
+    this.checkForErrors();
     return this.get(0); // minimum value is always the first element
   }
 
@@ -41,8 +37,14 @@ class SortedList {
   }
 
   avg() {
-    if (this.length == 0) throw new Error("EmptySortedList");
+    this.checkForErrors();
     return this.sum() / this.length;
+  }
+
+  checkForErrors(index) {
+    if (index == undefined) {
+      if (this.length == 0) throw new Error("EmptySortedList");
+    } else if (index > this.length || index < 0) throw new Error("OutOfBounds");
   }
 }
 
